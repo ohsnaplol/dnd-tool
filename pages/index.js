@@ -10,7 +10,7 @@ export default function index() {
         Take your dungeon crawling to the next level 
         with real time maps, character data, and battle data!
       </p>
-      <Login/>
+      <Login/><br/>
       <Link href='/register'>
         <button>register</button>
       </Link>
