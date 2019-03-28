@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "dotenv": "^7.0.0",
     "express-session": "^1.15.6",
     "firebase": "^5.9.1",
     "firebase-admin": "^7.1.1",
