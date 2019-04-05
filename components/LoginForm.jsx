@@ -1,8 +1,19 @@
 import React from 'react'
+import axios from 'axios'
 
 const Login = () => {
+
+  function onLogin(e) {
+    e.preventDefault()
+    console.log('logging in..')
+    axios.post('/login', {username: 'play'}).then(response => {
+      console.log('we logged in')
+      console.log('response: ' + response.data)
+    })
+  }
   return (
-    <form>
+    <>
+    <form onSubmit={onLogin}>
       <label>
         username
         <input 
@@ -21,6 +32,7 @@ const Login = () => {
       <br/>
       <button type="submit">login</button>
     </form>
+    </>
   )
 }
 
