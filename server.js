@@ -26,7 +26,7 @@ app.prepare().then(() => {
     session({
       secret: process.env.SESSION_SECRET,
       saveUninitialized: true,
-      store: new FileStore({ path: '/tmp/sessions', secret: 'geheimnis' }),
+      store: new FileStore({ path: '/tmp/sessions', secret: process.env.SESSION_SECRET }),
       resave: false,
       rolling: true,
       httpOnly: true,
