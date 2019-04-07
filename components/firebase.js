@@ -3,5 +3,8 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import clientCredentials from '../credentials/client'
 
-firebase.initializeApp(clientCredentials)
+if (!firebase.apps.length) {
+  firebase.initializeApp(clientCredentials)
+}
+
 module.exports = firebase
