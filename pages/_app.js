@@ -1,21 +1,8 @@
 import React from 'react'
 import UserContext from '../components/UserContext'
 import App, { Container } from 'next/app'
-import Link from 'next/link'
 import firebase from '../components/firebase'
-
-class Layout extends React.Component {
-  render () {
-    const { children } = this.props
-    return (
-      <div className='layout'>
-        <Link href="/"><a>index</a></Link>
-        <Link href="/games"><a>games</a></Link> dashboard
-        {children}
-      </div>
-    )
-  }
-}
+import Layout from '../components/Layout'
 
 export default class MyApp extends App {
   static async getInitialProps ({ req, query }) {
