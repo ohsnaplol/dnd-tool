@@ -39,7 +39,7 @@ app.prepare().then(() => {
     next()
   })
 
-  server.post('/login', (req, res) => {
+  server.post('/api/login', (req, res) => {
     if (!req.body) return res.sendStatus(400)
 
     const token = req.body.token
