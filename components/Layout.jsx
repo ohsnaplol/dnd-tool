@@ -14,7 +14,7 @@ function Layout(props) {
       <Link href="/"><a>index</a></Link>
       <Link href="/games"><a>games</a></Link> dashboard
       {user && user.displayName}
-      <img src="https://lh3.googleusercontent.com/-IP2t_UAceYM/AAAAAAAAAAI/AAAAAAABSz4/i0o5hk6NFt8/photo.jpg"/>
+      <img src="https://lh3.googleusercontent.com/-IP2t_UAceYM/AAAAAAAAAAI/AAAAAAABSz4/i0o5hk6NFt8/photo.jpg" alt="Profile"/>
       {user && <button onClick={handleLogout}>Logout</button>}
       {children}
       <style jsx>{`
