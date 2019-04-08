@@ -12,7 +12,7 @@ export default class Index extends Component {
 
     return (
       <div>
-        <p>Welcome to dnd-tool{user && `, ${user.displayName}`}!</p>
+        <p>Welcome to dnd-tool!</p>
         <p>
           Take your dungeon crawling to the next level 
           with real time maps, character data, and battle data!

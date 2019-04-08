@@ -12,9 +12,24 @@ function Layout(props) {
   return (
     <div className='layout'>
       <Link href="/"><a>index</a></Link>
-      <Link href="/games"><a>games</a></Link> dashboard
-      {user && <button onClick={handleLogout}>Logout</button>}
+      <Link href="/games"><a>games</a></Link>
+      <span>dashboard</span>
+      {user && 
+        <>
+          <span>{user.displayName}</span>
+          {user.photoURL && <img src={user.photoURL} alt="Profile"/>}
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      }
       {children}
+      <style jsx>{`
+        img {
+          height: 20px;
+        }
+        .layout > * {
+          margin-right: 10px;
+        }
+      `}</style>
     </div>
   )
 }
