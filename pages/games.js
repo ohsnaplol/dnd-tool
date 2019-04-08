@@ -6,7 +6,6 @@ function games(props) {
 
   return (
     <div>
-      <p>Welcome. You must be {user && user.displayName}</p>
       <button>Create game</button>
     </div>
   )
