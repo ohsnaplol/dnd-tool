@@ -12,9 +12,4 @@ function games(props) {
   )
 }
 
-games.getInitialProps = async ({ req }) => {
-  const user = req && req.session ? req.session.decodedToken : null
-  return { user }
-}
-
 export default games
