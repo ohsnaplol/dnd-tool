@@ -5,7 +5,8 @@ import firebase from '../components/firebase'
 import Layout from '../components/Layout'
 
 export default class MyApp extends App {
-  static async getInitialProps ({ req, query }) {
+  static async getInitialProps ({ ctx }) {
+    const { req } = ctx
     const user = req && req.session ? req.session.decodedToken : null
     return { user }
   }
