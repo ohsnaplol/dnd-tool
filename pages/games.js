@@ -21,7 +21,7 @@ function games(props) {
       {gamesList !== undefined && 
         <ol>
           {gamesList.map(doc => 
-            <li key={doc.id}>{doc.id}</li>
+            <li key={doc.id}>{doc.data().title}</li>
           )}
         </ol>
       }
