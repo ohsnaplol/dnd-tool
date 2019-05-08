@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import firebase from '../components/firebase'
 import UserContext from '../components/UserContext'
+import Link from 'next/link'
 
 function games(props) {
   const user = useContext(UserContext)
@@ -17,7 +18,7 @@ function games(props) {
 
   return (
     <div>
-      <button>Create game</button>
+      <Link href="/create_game"><button>Create game</button></Link>
       {gamesList !== undefined && 
         <ol>
           {gamesList.map(doc => 
