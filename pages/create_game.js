@@ -21,7 +21,7 @@ function create_game() {
   return (
     <div>
       <label htmlFor="game-input">Game title</label>
-      <input placeholder="Game title" id="game-input" value={title} onChange={(e) => setTitle(e.target.value)}/>
+      <input placeholder="Game title" id="game-input" value={title} onChange={e => setTitle(e.target.value)}/>
       <button onClick={() => onCreateGameButtonPush()}>Create Game</button>
     </div>
   )
