@@ -34,6 +34,27 @@ app.prepare().then(() => {
     })
   )
 
+  server.post('/api/game', (req, res, next) => {
+    if (!req.body) return res.sendStatus(400)
+
+    const { idToken, title } = req.body
+    if (idToken && title) {
+      firebase.auth().verifyIdToken(idToken)
+        .then(decodedToken => {
+          const creatorId = decodedToken.uid
+          firebase
+            .firestore()
+            .collection('/games')
+            .doc()
+            .set({ creatorId, title })
+            .then(() => res.sendStatus(200))
+            .catch(() => res.sendStatus(500))
+        })
+    } else {
+      return res.sendStatus(400)
+    }
+  })
+
   server.use((req, res, next) => {
     req.firebaseServer = firebase
     next()
