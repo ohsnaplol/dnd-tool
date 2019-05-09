@@ -18,13 +18,15 @@ function games(props) {
 
   return (
     <div>
-      <Link href="/create_game">Create game</Link>
-      {gamesList !== undefined && 
+      <Link href="/create_game"><a href="/create_game">Create game</a></Link>
+      {gamesList !== undefined ? 
         <ol>
           {gamesList.map(doc => 
             <li key={doc.id}>{doc.data().title}</li>
           )}
         </ol>
+        :
+        <p>Loading games...</p>
       }
     </div>
   )
