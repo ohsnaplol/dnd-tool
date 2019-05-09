@@ -18,7 +18,7 @@ function games(props) {
 
   return (
     <div>
-      <Link href="/create_game"><button>Create game</button></Link>
+      <Link href="/create_game">Create game</Link>
       {gamesList !== undefined && 
         <ol>
           {gamesList.map(doc => 
