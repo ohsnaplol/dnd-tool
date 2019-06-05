@@ -14,7 +14,7 @@ function MyGamesManager({ userId }) {
       .then(games => {
         setGamesList(games.docs)
       }).catch(err => console.error(err))
-  }, [])
+  }, [userId])
 
   function onDeleteClick(id, index) {
     firebase
