@@ -22,8 +22,8 @@ function MyGamesManager({ userId }) {
       .collection('/games')
       .doc(id)
       .delete()
-      .then(data => {
-        console.log('data',data)
+      .then(() => {
+        setGamesList(gamesList.filter(game => game.id !== id))
       })
       .catch(error => {
         console.error(error)
