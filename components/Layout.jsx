@@ -5,28 +5,35 @@ import Link from 'next/link'
 
 function Layout(props) {
   const user = useContext(UserContext)
-  function handleLogout () {
+  function handleLogout() {
     firebase.auth().signOut()
   }
   const { children } = props
   return (
     <div className='layout'>
-      <Link href="/"><a>index</a></Link>
-      <Link href="/games"><a>games</a></Link>
-      <span>dashboard</span>
-      {user && 
-        <>
-          <span>{user.displayName}</span>
-          {user.photoURL && <img src={user.photoURL} alt="Profile"/>}
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      }
+      <header>
+        <h1>DND Tool</h1>
+        {user &&
+          <>
+            <span>{user.displayName}</span>
+            {user.photoURL && <img src={user.photoURL} alt="Profile" />}
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        }
+      </header>
       {children}
       <style jsx>{`
+        h1 {
+          display: inline-block;
+          margin-right: 20px;
+        }
         img {
           height: 20px;
         }
-        .layout > * {
+        nav {
+          display: inline-block;
+        }
+        nav > * {
           margin-right: 10px;
         }
       `}</style>
