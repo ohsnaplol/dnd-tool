@@ -39,27 +39,23 @@ function MyGamesManager({ userId }) {
 
   if (gamesList === undefined) {
     return <p>Loading...</p>
+  } else if (isCreatingGame) {
+    return <CreateGame onCreateGame={() => onCreateGame()}/>
   } else {
     return (
       <>
-        {isCreatingGame ?
-          <CreateGame onCreateGame={() => onCreateGame()}/>
-          :
-          <>
-            <button onClick={onCreateGameClick}>Create Game</button>
+        <button onClick={onCreateGameClick}>Create Game</button>
+        <ul>
+          {gamesList.length > 0 ?
             <ul>
-              {gamesList.length > 0 ?
-                <ul>
-                  {gamesList.map((doc, i) =>
-                    <li key={doc.id}><span>{doc.data().title}</span><button onClick={() => onDeleteClick(doc.id, i)}>delete</button></li>
-                  )}
-                </ul>
-                :
-                <p>You have no games.</p>
-              }
+              {gamesList.map((doc, i) =>
+                <li key={doc.id}><span>{doc.data().title}</span><button onClick={() => onDeleteClick(doc.id, i)}>delete</button></li>
+              )}
             </ul>
-          </>
-        }
+            :
+            <p>You have no games.</p>
+          }
+        </ul>
       </>
     )
   }
