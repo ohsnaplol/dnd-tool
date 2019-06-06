@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import firebase from '../components/firebase'
 import CreateGame from './CreateGame'
 
@@ -6,8 +6,15 @@ function MyGamesManager({ userId }) {
   const [gamesList, setGamesList] = useState(undefined)
   const [isCreatingGame, setIsCreatingGame] = useState(false)
 
+  const onCreateGame = useCallback(() => {
+    console.log('on create game')
+    setIsCreatingGame(false)
+  }, [isCreatingGame])
+
+  // Trying to figure how to only run effect on mount (working), 
+  // and when onCreateGame is called
   useEffect(() => {
-    console.log('getting from firebase')
+    console.log('effect called')
     firebase
       .firestore()
       .collection('/games')
@@ -16,7 +23,7 @@ function MyGamesManager({ userId }) {
       .then(games => {
         setGamesList(games.docs)
       }).catch(err => alert(err))
-  }, [userId, isCreatingGame])
+  }, [userId, onCreateGame])
 
   function onDeleteClick(id, index) {
     firebase
@@ -32,10 +39,6 @@ function MyGamesManager({ userId }) {
 
   function onCreateGameClick() {
     setIsCreatingGame(true)
-  }
-
-  function onCreateGame() {
-    setIsCreatingGame(false)
   }
 
   if (gamesList === undefined) {
