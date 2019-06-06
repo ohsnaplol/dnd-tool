@@ -16,6 +16,7 @@ function create_game(props) {
 
   return (
     <div>
+      <button onClick={() => props.onCreateGame()}>Cancel</button>
       <label htmlFor="game-input">Game title</label>
       <input placeholder="Game title" id="game-input" value={title} onChange={e => setTitle(e.target.value)}/>
       <button onClick={onCreateGameButtonPush}>Create Game</button>
