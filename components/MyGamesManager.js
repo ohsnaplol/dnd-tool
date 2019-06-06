@@ -15,7 +15,7 @@ function MyGamesManager({ userId }) {
       .then(games => {
         setGamesList(games.docs)
       }).catch(err => console.error(err))
-  }, [userId])
+  }, [userId, onCreateGame])
 
   function onDeleteClick(id, index) {
     firebase
@@ -33,13 +33,17 @@ function MyGamesManager({ userId }) {
     setIsCreatingGame(true)
   }
 
+  function onCreateGame() {
+    setIsCreatingGame(false)
+  }
+
   if (gamesList === undefined) {
     return <p>Loading...</p>
   } else {
     return (
       <>
         {isCreatingGame ?
-          <CreateGame />
+          <CreateGame onCreateGame={() => onCreateGame()}/>
           :
           <>
             <button onClick={onCreateGameClick}>Create Game</button>
