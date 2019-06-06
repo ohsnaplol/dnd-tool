@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import firebase from '../components/firebase'
 import CreateGame from './CreateGame'
 
