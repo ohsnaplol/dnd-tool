@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react'
 import firebase from '../components/firebase'
 import Axios from 'axios';
 
-function create_game() {
+function create_game(props) {
   const [title, setTitle] = useState('')
 
   const onCreateGameButtonPush = useCallback(() =>
@@ -10,9 +10,7 @@ function create_game() {
       Axios.post('/api/game', {
         idToken,
         title,
-      }).then(() => {
-        alert('game created')
-      })
+      }).then(response => props.onCreateGame())
     }).catch(err => alert(err))
   , [title])
 
