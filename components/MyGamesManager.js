@@ -14,7 +14,7 @@ function MyGamesManager({ userId }) {
       .get()
       .then(games => {
         setGamesList(games.docs)
-      }).catch(err => console.error(err))
+      }).catch(err => alert(err))
   }, [userId, onCreateGame])
 
   function onDeleteClick(id, index) {
