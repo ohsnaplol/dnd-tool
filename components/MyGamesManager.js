@@ -7,6 +7,7 @@ function MyGamesManager({ userId }) {
   const [isCreatingGame, setIsCreatingGame] = useState(false)
 
   useEffect(() => {
+    console.log('getting from firebase')
     firebase
       .firestore()
       .collection('/games')
@@ -15,7 +16,7 @@ function MyGamesManager({ userId }) {
       .then(games => {
         setGamesList(games.docs)
       }).catch(err => alert(err))
-  }, [userId, onCreateGame])
+  }, [userId, isCreatingGame])
 
   function onDeleteClick(id, index) {
     firebase
