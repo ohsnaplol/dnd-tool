@@ -48,7 +48,7 @@ function MyGamesManager({ userId }) {
           <>
             <button onClick={onCreateGameClick}>Create Game</button>
             <ul>
-              {gamesList.length > 1 ?
+              {gamesList.length > 0 ?
                 <ul>
                   {gamesList.map((doc, i) =>
                     <li key={doc.id}><span>{doc.data().title}</span><button onClick={() => onDeleteClick(doc.id, i)}>delete</button></li>
