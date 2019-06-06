@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import firebase from '../components/firebase'
 import CreateGame from './CreateGame'
 
 function MyGamesManager({ userId }) {
   const [gamesList, setGamesList] = useState(undefined)
+  const [isCreatingGame, setIsCreatingGame] = useState(false)
 
   useEffect(() => {
     firebase
@@ -25,10 +26,11 @@ function MyGamesManager({ userId }) {
       .then(() => {
         setGamesList(gamesList.filter(game => game.id !== id))
       })
-      .catch(error => {
-        console.error(error)
-      })
-    console.log('lets delete game of id', id, 'and index', index)
+      .catch(error => alert(error))
+  }
+
+  function onCreateGameClick() {
+    setIsCreatingGame(true)
   }
 
   if (gamesList === undefined) {
@@ -36,18 +38,24 @@ function MyGamesManager({ userId }) {
   } else {
     return (
       <>
-        <CreateGame />
-        <ul>
-          {gamesList.length > 1 ?
+        {isCreatingGame ?
+          <CreateGame />
+          :
+          <>
+            <button onClick={onCreateGameClick}>Create Game</button>
             <ul>
-              {gamesList.map((doc, i) =>
-                <li key={doc.id}><span>{doc.data().title}</span><button onClick={() => onDeleteClick(doc.id, i)}>delete</button></li>
-              )}
+              {gamesList.length > 1 ?
+                <ul>
+                  {gamesList.map((doc, i) =>
+                    <li key={doc.id}><span>{doc.data().title}</span><button onClick={() => onDeleteClick(doc.id, i)}>delete</button></li>
+                  )}
+                </ul>
+                :
+                <p>You have no games.</p>
+              }
             </ul>
-            :
-            <p>You have no games.</p>
-          }
-        </ul>
+          </>
+        }
       </>
     )
   }
